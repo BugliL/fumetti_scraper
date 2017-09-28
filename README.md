@@ -1,4 +1,5 @@
 # Scrapy Fumetti
+Versione per Python3
 
 ## Installazione prerequisiti
 
@@ -17,11 +18,12 @@ $ pip install scrapy
 
 ## Lanciare l'applicazione
 ```
+$ rm output.json
 $ scrapy crawl fumetti -o output.json
 $ python download.py
 ```
 
 ## Usando un unico comando
 ```
-$ scrapy crawl fumetti -o output.json; python download.py
+$ output.json; scrapy crawl fumetti -o output.json; python download.py
 ```
