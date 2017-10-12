@@ -22,7 +22,7 @@ for d in data:
 
     chapter_path = os.path.join(BASEPATH, chapter)
     if not os.path.isdir(chapter_path):
-        os.mkdir(chapter_path)
+        os.makedirs(chapter_path)
 
     print("downloading {} - {} - {}".format(chapter, page, img))
     request.urlretrieve(img, "{}/{}.jpg".format(chapter_path, page))
