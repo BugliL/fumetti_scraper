@@ -9,6 +9,12 @@ $ sudo apt-get install libssl-dev
 $ sudo apt-get install libxml2-dev libxslt1-dev
 ```
 
+## In un comando
+
+```
+$ sudo apt-get install -y libffi-dev libssl-dev libxml2-dev libxslt1-dev
+```
+
 ## Installazione dipendenze
 
 ```
@@ -25,5 +31,5 @@ $ python download.py
 
 ## Usando un unico comando
 ```
-$ output.json; scrapy crawl fumetti -o output.json; python download.py
+$ rm output.json; scrapy crawl fumetti -o output.json; python download.py
 ```
