@@ -8,6 +8,10 @@ for root, dirs, files in os.walk("immagini"):
     os.rename(path_str, path_str.replace(" ", "_"))
 
     if len(path) > 1:  # sei in una subfolder
+        newname = path[1].replace(" ", "_")
+        path[1] = newname
+        path_str = os.sep.join(path)
+
         pdf_name = path[1]
         file_list = []
 
