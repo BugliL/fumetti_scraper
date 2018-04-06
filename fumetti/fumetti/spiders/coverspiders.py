@@ -4,7 +4,7 @@ import datetime
 import scrapy
 
 BASE_DOMAIN = "http://www.mangareader.net"
-BASE_URL = "http://www.mangareader.net/yu-gi-oh-gx"
+BASE_URL = "http://www.mangareader.net/kakegurui"
 NEXT_XPATH = "//span[@class=\"next\"]/a/@href"
 PAGE_XPATH = "//*[@id=\"mangainfo\"]/div[1]/span/text()"
 CHAPTER_XPATH = "//*[@id=\"mangainfo\"]/div[1]/h1//text()"
