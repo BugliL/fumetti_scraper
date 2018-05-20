@@ -11,6 +11,7 @@ class Base(scrapy.Spider):
     def __init__(self, *args, **kwargs):
         super(Base, self).__init__(*args, **kwargs)
         self.manga = kwargs.get('manga')
+        self.callback = kwargs.get('callback')
 
         if not self.manga:
             raise Exception('Manga Not Given')
@@ -28,3 +29,7 @@ class Base(scrapy.Spider):
 
     def parse(self, response):
         pass
+
+    def notify_callback(self, data):
+        if self.callback:
+            self.callback(data)

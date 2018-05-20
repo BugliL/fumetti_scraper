@@ -22,7 +22,11 @@ class Mangareader(Base):
             chapter = response.xpath(self.CHAPTER_XPATH).extract_first()
             page = response.xpath(self.PAGE_XPATH).extract_first()
             page = page.replace("&nbsp;", "").replace("-", "").replace("Page ", "").replace("\xa0", "")
-            yield MangaPage(manga=self.manga_name, chapter=chapter, page=page, img=img)
+            kwargs = {'manga':self.manga_name, 'chapter':chapter, 'page':page, 'img':img}
+            # self.notify_callback(manga=self.manga_name, chapter=chapter, page=page, img=img)
+            self.notify_callback(kwargs)
+            # yield MangaPage(manga=self.manga_name, chapter=chapter, page=page, img=img)
+            yield MangaPage(**kwargs)
 
         l = response.xpath(self.NEXT_XPATH).extract_first()
         yield response.follow(l, self.parse_page)
