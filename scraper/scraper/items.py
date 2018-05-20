@@ -8,7 +8,10 @@
 import scrapy
 
 
-class ScraperItem(scrapy.Item):
+class MangaPage(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    pass
+    manga = scrapy.Field()
+    chapter = scrapy.Field()
+    page = scrapy.Field()
+    img = scrapy.Field()
