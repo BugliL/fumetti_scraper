@@ -1,6 +1,8 @@
 # import the necessary packages
 from scraper.scraper.items import MangaPage
 from scraper.scraper.spiders.base import Base
+# from ..items import MangaPage
+# from .base import Base
 import scrapy
 
 
@@ -25,6 +27,7 @@ class Mangareader(Base):
             kwargs = {'manga':self.manga_name, 'chapter':chapter, 'page':page, 'img':img}
             # self.notify_callback(manga=self.manga_name, chapter=chapter, page=page, img=img)
             self.notify_callback(kwargs)
+            self.add_return(kwargs)
             # yield MangaPage(manga=self.manga_name, chapter=chapter, page=page, img=img)
             yield MangaPage(**kwargs)
 

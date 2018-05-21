@@ -6,12 +6,16 @@ from os import makedirs, remove, listdir
 
 class Base(scrapy.Spider):
     custom_settings = {'ITEM_PIPELINES': {'scraper.scraper.pipelines.ScraperPipeline': 100}}
+    # custom_settings = {'ITEM_PIPELINES': {'scraper.pipelines.ScraperPipeline': 100}}
     BASE_DOMAIN = ''
 
     def __init__(self, *args, **kwargs):
         super(Base, self).__init__(*args, **kwargs)
         self.manga = kwargs.get('manga')
         self.callback = kwargs.get('callback')
+        self.ret = kwargs.get('ret')
+        if self.ret:
+            self.ret = []
 
         if not self.manga:
             raise Exception('Manga Not Given')
@@ -33,3 +37,7 @@ class Base(scrapy.Spider):
     def notify_callback(self, data):
         if self.callback:
             self.callback(data)
+
+    def add_return(self, data):
+        if self.ret:
+            self.ret.append(data)

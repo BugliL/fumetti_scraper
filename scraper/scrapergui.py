@@ -1,69 +1,58 @@
 from PyQt5.QtWidgets import QMainWindow, QMessageBox
-
-from subprocess import call
-from threading import Thread
-
-from PyQt5.uic.properties import QtGui
-from scrapy.crawler import CrawlerProcess
-from scrapy.utils.project import get_project_settings
-
-from .scraper.spiders.mangareader import Mangareader
 from .gui.gui import Ui_mainWindow
 
-
-from PyQt5 import QtWidgets, uic
-from os import sys, getcwd, listdir, rename
-from os.path import join, isdir
-from PyQt5.QtCore import QDir, Qt, QThread
-from PyQt5.QtGui import QStandardItemModel, QStandardItem
-from pathlib import Path
-
-
-# # class WorkerThread(QThread):
-#     # def __init__(self, manga, callback=None):
-#     def __init__(self):
-#         super(WorkerThread, self).__init__()
-#         # self.manga = manga
-#         # self.callback = callback
-#         # self.running = True
-#
-#     def run(self):
-#         print('ciao')
-#         # process = CrawlerProcess(get_project_settings())
-#         # process.crawl(Mangareader, manga=self.manga, callback=self.callback)
-#         # process.start()
-#         # self.exit()
-#         # self.running = False
+from scrapy.crawler import CrawlerProcess, CrawlerRunner
+from scrapy.utils.project import get_project_settings
+# from .scraper.spiders.mangareader import Mangareader
+from scraper.scraper.spiders.mangareader import Mangareader
+from multiprocessing import Process, Queue
+from twisted.internet import reactor
 
 
 class ScraperGui(QMainWindow):
-    manga_info = {'chapters': [], 'chapter_pages': 0, 'pages': 0}
+    manga_info = {'chapters': [], 'pages': 0}
 
     def __init__(self):
         super(ScraperGui, self).__init__()
         self.ui = Ui_mainWindow()
         self.ui.setupUi(self)
-        self.show()
         self.ui.fetch_button.clicked.connect(self.launch_scraper)
         self.ui.download_button.clicked.connect(self.download_imgs)
+        self.setFixedSize(self.size())
+        self.show()
+        # self.crawler_process = CrawlerProcess(get_project_settings())
+        self.crawler_process = CrawlerRunner(get_project_settings())
 
+    def run_spider(self, manga_name):
+        try:
+            myreturn = []
+            runner = CrawlerRunner()
+            deferred = runner.crawl(Mangareader, manga=manga_name, callback=self.update_manga_info, ret=myreturn)
+            deferred.addBoth(lambda _: reactor.stop())
+            reactor.run()
+            self.manga_ret = myreturn
+        except Exception:
+            self._show_allert('Runtime Error')
 
     def launch_scraper(self, signal):
-        manga_name = self.ui.manga_name.toPlainText()
+        manga_name = self.ui.manga_name.text()
         if manga_name:
-            # def scraper(manga, callback):
-            #     process = CrawlerProcess(get_project_settings())
-            #     process.crawl(Mangareader, manga=manga, callback=callback)
-            #     process.start()
-            # t = Thread(target=scraper, args=[manga_name, self.update])
-            # t.start()
-            # # w = WorkerThread(manga=manga_name, callback=self.update)
-            # # w = WorkerThread()
-            # # w.start()
-            # # call(f"scraper.py ")
-            process = CrawlerProcess(get_project_settings())
-            process.crawl(Mangareader, manga=manga_name, callback=self.update_manga_info)
-            process.start()
+            p = Process(target=self.run_spider, args=(manga_name,)) # TODO continuare da qui
+            p.start()
+            p.join()
+            # # self.crawler_process.crawl(Mangareader, manga=manga_name, callback=self.update_manga_info)
+            # # self.crawler_process.start(stop_after_crawl=)
+            # # self.crawler_process.start()
+            # self.crawler_process.crawl(Mangareader, manga=manga_name, callback=self.update_manga_info)
+            # self.crawler_process.join()
+            print(self.manga_info)
+            # print(self.manga_ret)
+            self.ui.chapters.setText(str(len(self.manga_info['chapters'])))
+            self.ui.pages.setText(str(self.manga_info['pages']))
+            if self.manga_info['pages']:
+                self.ui.download_button.setEnabled(True)
+            else:
+                self._show_allert("Manga Not Found")
         else:
             self._show_allert("Manga Url Missing")
 
@@ -72,22 +61,11 @@ class ScraperGui(QMainWindow):
         # TODO remove manga_info
 
     def update_manga_info(self, data):
-        print(data)
+        print('-'*20, data)
         if data['chapter'] not in self.manga_info['chapters']:
             self.manga_info['chapters'].append(data['chapter'])
-            self.manga_info['chapter_pages'] = 1
-            self.ui.chapters.setText(str(len(self.manga_info['chapters'])))
-        else:
-            self.manga_info['chapter_pages'] += 1
         self.manga_info['pages'] += 1
-        self.ui.chapter_pages.setText(str(self.manga_info['chapter_pages']))
-        self.ui.pages.setText(str(self.manga_info['pages']))
-        # QtGui.qApp.processEvents()
-        # QtGui.QMainWindow.update(self)
-        # QMainWindow.update(self)
-        self.ui.chapters.update()
-        self.ui.chapter_pages.update()
-        self.ui.pages.update()
+        print(self.manga_info)
 
     def _show_allert(self, text):
         msg = QMessageBox()
