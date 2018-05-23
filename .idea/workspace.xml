@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a969f2da-cdb2-4e25-abf3-aa758d0992f8" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scraper/scraper/items.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraper/scraper/items.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scraper/scraper/pipelines.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraper/scraper/pipelines.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scraper/scraper/spiders/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraper/scraper/spiders/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scraper/scraper/spiders/mangareader.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraper/scraper/spiders/mangareader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scraper/gui/gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraper/gui/gui.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scraper/gui/gui.ui" beforeDir="false" afterPath="$PROJECT_DIR$/scraper/gui/gui.ui" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scraper/scrapergui.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraper/scrapergui.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -72,8 +70,8 @@
       <file leaf-file-name="scrapergui.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scraper/scrapergui.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="61" selection-start-line="58" selection-end-line="61" />
+            <state relative-caret-position="269">
+              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
               <folding>
                 <element signature="e#0#52#0" expanded="true" />
               </folding>
@@ -289,7 +287,14 @@
       <option name="project" value="LOCAL" />
       <updated>1526831395874</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Restarted Project">
+      <created>1527108529194</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1527108529195</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -627,10 +632,15 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/sys">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1935" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/scraper/scrapergui.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="61" selection-start-line="58" selection-end-line="61" />
+        <state relative-caret-position="269">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
           <folding>
             <element signature="e#0#52#0" expanded="true" />
           </folding>

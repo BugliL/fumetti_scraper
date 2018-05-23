@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'scraper/gui/gui.ui'
+# Form implementation generated from reading ui file 'gui.ui'
 #
 # Created by: PyQt5 UI code generator 5.6
 #
@@ -20,10 +20,10 @@ class Ui_mainWindow(object):
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.comboBox = QtWidgets.QComboBox(self.horizontalLayoutWidget)
-        self.comboBox.setObjectName("comboBox")
-        self.comboBox.addItem("")
-        self.horizontalLayout.addWidget(self.comboBox)
+        self.manga_site = QtWidgets.QComboBox(self.horizontalLayoutWidget)
+        self.manga_site.setObjectName("manga_site")
+        self.manga_site.addItem("")
+        self.horizontalLayout.addWidget(self.manga_site)
         self.label = QtWidgets.QLabel(self.horizontalLayoutWidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -95,17 +95,17 @@ class Ui_mainWindow(object):
         self.label_6 = QtWidgets.QLabel(self.horizontalLayoutWidget_2)
         self.label_6.setObjectName("label_6")
         self.horizontalLayout_2.addWidget(self.label_6)
-        self.comboBox_2 = QtWidgets.QComboBox(self.horizontalLayoutWidget_2)
+        self.output_format = QtWidgets.QComboBox(self.horizontalLayoutWidget_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.comboBox_2.sizePolicy().hasHeightForWidth())
-        self.comboBox_2.setSizePolicy(sizePolicy)
-        self.comboBox_2.setObjectName("comboBox_2")
-        self.comboBox_2.addItem("")
-        self.comboBox_2.addItem("")
-        self.comboBox_2.addItem("")
-        self.horizontalLayout_2.addWidget(self.comboBox_2)
+        sizePolicy.setHeightForWidth(self.output_format.sizePolicy().hasHeightForWidth())
+        self.output_format.setSizePolicy(sizePolicy)
+        self.output_format.setObjectName("output_format")
+        self.output_format.addItem("")
+        self.output_format.addItem("")
+        self.output_format.addItem("")
+        self.horizontalLayout_2.addWidget(self.output_format)
         self.download_button = QtWidgets.QPushButton(self.centralwidget)
         self.download_button.setEnabled(False)
         self.download_button.setGeometry(QtCore.QRect(570, 230, 99, 27))
@@ -146,7 +146,7 @@ class Ui_mainWindow(object):
     def retranslateUi(self, mainWindow):
         _translate = QtCore.QCoreApplication.translate
         mainWindow.setWindowTitle(_translate("mainWindow", "Fumetti Scraper Gui"))
-        self.comboBox.setItemText(0, _translate("mainWindow", "www.mangareader.net"))
+        self.manga_site.setItemText(0, _translate("mainWindow", "www.mangareader.net"))
         self.label.setText(_translate("mainWindow", "/"))
         self.fetch_button.setText(_translate("mainWindow", "Fetch"))
         self.label_2.setText(_translate("mainWindow", "1) Fetch Manga Url"))
@@ -156,9 +156,9 @@ class Ui_mainWindow(object):
         self.pages.setText(_translate("mainWindow", "?"))
         self.label_4.setText(_translate("mainWindow", "2) Download Manga"))
         self.label_6.setText(_translate("mainWindow", "Output Format"))
-        self.comboBox_2.setItemText(0, _translate("mainWindow", "pdf"))
-        self.comboBox_2.setItemText(1, _translate("mainWindow", "cbr"))
-        self.comboBox_2.setItemText(2, _translate("mainWindow", "img"))
+        self.output_format.setItemText(0, _translate("mainWindow", "pdf"))
+        self.output_format.setItemText(1, _translate("mainWindow", "cbr"))
+        self.output_format.setItemText(2, _translate("mainWindow", "img"))
         self.download_button.setText(_translate("mainWindow", "Download"))
         self.label_8.setText(_translate("mainWindow", "Total"))
         self.label_9.setText(_translate("mainWindow", "Current Chapter"))
