@@ -11,6 +11,7 @@ import scrapy
 class MangaPage(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
+    json_path = scrapy.Field()
     manga = scrapy.Field()
     chapter = scrapy.Field()
     page = scrapy.Field()
