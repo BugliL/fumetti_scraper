@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'gui.ui'
+# Form implementation generated from reading ui file 'scraper/gui/gui.ui'
 #
 # Created by: PyQt5 UI code generator 5.6
 #
@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_mainWindow(object):
     def setupUi(self, mainWindow):
         mainWindow.setObjectName("mainWindow")
-        mainWindow.resize(681, 398)
+        mainWindow.resize(681, 419)
         self.centralwidget = QtWidgets.QWidget(mainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.horizontalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
@@ -22,6 +22,10 @@ class Ui_mainWindow(object):
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.manga_site = QtWidgets.QComboBox(self.horizontalLayoutWidget)
         self.manga_site.setObjectName("manga_site")
+        self.manga_site.addItem("")
+        self.manga_site.setItemText(0, "")
+        self.manga_site.addItem("")
+        self.manga_site.addItem("")
         self.manga_site.addItem("")
         self.horizontalLayout.addWidget(self.manga_site)
         self.label = QtWidgets.QLabel(self.horizontalLayoutWidget)
@@ -80,7 +84,7 @@ class Ui_mainWindow(object):
         self.pages.setObjectName("pages")
         self.gridLayout_3.addWidget(self.pages, 0, 1, 1, 1)
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
-        self.label_4.setGeometry(QtCore.QRect(10, 190, 141, 31))
+        self.label_4.setGeometry(QtCore.QRect(10, 190, 181, 31))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.label_4.setFont(font)
@@ -111,19 +115,19 @@ class Ui_mainWindow(object):
         self.download_button.setGeometry(QtCore.QRect(570, 230, 99, 27))
         self.download_button.setObjectName("download_button")
         self.total_bar = QtWidgets.QProgressBar(self.centralwidget)
-        self.total_bar.setGeometry(QtCore.QRect(20, 290, 651, 23))
+        self.total_bar.setGeometry(QtCore.QRect(20, 310, 651, 23))
         self.total_bar.setProperty("value", 0)
         self.total_bar.setObjectName("total_bar")
         self.chapter_bar = QtWidgets.QProgressBar(self.centralwidget)
-        self.chapter_bar.setGeometry(QtCore.QRect(20, 350, 651, 23))
+        self.chapter_bar.setGeometry(QtCore.QRect(20, 370, 651, 23))
         self.chapter_bar.setProperty("value", 0)
         self.chapter_bar.setObjectName("chapter_bar")
         self.label_8 = QtWidgets.QLabel(self.centralwidget)
-        self.label_8.setGeometry(QtCore.QRect(20, 260, 131, 31))
+        self.label_8.setGeometry(QtCore.QRect(20, 280, 131, 31))
         self.label_8.setTextFormat(QtCore.Qt.AutoText)
         self.label_8.setObjectName("label_8")
         self.label_9 = QtWidgets.QLabel(self.centralwidget)
-        self.label_9.setGeometry(QtCore.QRect(20, 320, 131, 31))
+        self.label_9.setGeometry(QtCore.QRect(20, 340, 131, 31))
         self.label_9.setTextFormat(QtCore.Qt.AutoText)
         self.label_9.setObjectName("label_9")
         self.label_5 = QtWidgets.QLabel(self.centralwidget)
@@ -135,6 +139,24 @@ class Ui_mainWindow(object):
         font.setWeight(50)
         self.label_5.setFont(font)
         self.label_5.setObjectName("label_5")
+        self.label_10 = QtWidgets.QLabel(self.centralwidget)
+        self.label_10.setGeometry(QtCore.QRect(50, 260, 621, 21))
+        font = QtGui.QFont()
+        font.setBold(False)
+        font.setItalic(True)
+        font.setUnderline(False)
+        font.setWeight(50)
+        self.label_10.setFont(font)
+        self.label_10.setObjectName("label_10")
+        self.label_11 = QtWidgets.QLabel(self.centralwidget)
+        self.label_11.setGeometry(QtCore.QRect(170, 10, 361, 31))
+        font = QtGui.QFont()
+        font.setBold(False)
+        font.setItalic(True)
+        font.setUnderline(False)
+        font.setWeight(50)
+        self.label_11.setFont(font)
+        self.label_11.setObjectName("label_11")
         mainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(mainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -146,7 +168,9 @@ class Ui_mainWindow(object):
     def retranslateUi(self, mainWindow):
         _translate = QtCore.QCoreApplication.translate
         mainWindow.setWindowTitle(_translate("mainWindow", "Fumetti Scraper Gui"))
-        self.manga_site.setItemText(0, _translate("mainWindow", "www.mangareader.net"))
+        self.manga_site.setItemText(1, _translate("mainWindow", "www.mangaeden.com/en/en-manga"))
+        self.manga_site.setItemText(2, _translate("mainWindow", "www.mangaeden.com/it/it-manga"))
+        self.manga_site.setItemText(3, _translate("mainWindow", "www.mangareader.net"))
         self.label.setText(_translate("mainWindow", "/"))
         self.fetch_button.setText(_translate("mainWindow", "Fetch"))
         self.label_2.setText(_translate("mainWindow", "1) Fetch Manga Url"))
@@ -163,4 +187,6 @@ class Ui_mainWindow(object):
         self.label_8.setText(_translate("mainWindow", "Total"))
         self.label_9.setText(_translate("mainWindow", "Current Chapter"))
         self.label_5.setText(_translate("mainWindow", "the window could become \"not responding\", don\'t close it, let it fetch data in background"))
+        self.label_10.setText(_translate("mainWindow", "the window could become \"not responding\", don\'t close it, let it download data in background"))
+        self.label_11.setText(_translate("mainWindow", "select the site page with chapters list"))
 

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>681</width>
-    <height>398</height>
+    <height>419</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -26,6 +26,21 @@
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QComboBox" name="manga_site">
+       <item>
+        <property name="text">
+         <string/>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>www.mangaeden.com/en/en-manga</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>www.mangaeden.com/it/it-manga</string>
+        </property>
+       </item>
        <item>
         <property name="text">
          <string>www.mangareader.net</string>
@@ -149,7 +164,7 @@
      <rect>
       <x>10</x>
       <y>190</y>
-      <width>141</width>
+      <width>181</width>
       <height>31</height>
      </rect>
     </property>
@@ -229,7 +244,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>290</y>
+      <y>310</y>
       <width>651</width>
       <height>23</height>
      </rect>
@@ -242,7 +257,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>350</y>
+      <y>370</y>
       <width>651</width>
       <height>23</height>
      </rect>
@@ -255,7 +270,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>260</y>
+      <y>280</y>
       <width>131</width>
       <height>31</height>
      </rect>
@@ -271,7 +286,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>320</y>
+      <y>340</y>
       <width>131</width>
       <height>31</height>
      </rect>
@@ -302,6 +317,48 @@
     </property>
     <property name="text">
      <string>the window could become &quot;not responding&quot;, don't close it, let it fetch data in background</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_10">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>260</y>
+      <width>621</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>50</weight>
+      <italic>true</italic>
+      <bold>false</bold>
+      <underline>false</underline>
+     </font>
+    </property>
+    <property name="text">
+     <string>the window could become &quot;not responding&quot;, don't close it, let it download data in background</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_11">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>10</y>
+      <width>361</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>50</weight>
+      <italic>true</italic>
+      <bold>false</bold>
+      <underline>false</underline>
+     </font>
+    </property>
+    <property name="text">
+     <string>select the site page with chapters list</string>
     </property>
    </widget>
   </widget>

@@ -20,6 +20,7 @@ $ sudo apt-get install -y libffi-dev libssl-dev libxml2-dev libxslt1-dev
 ```
 $ pip install pillow
 $ pip install scrapy
+
 ```
 
 ## Lanciare l'applicazione
