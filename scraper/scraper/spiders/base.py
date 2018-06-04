@@ -33,10 +33,14 @@ class Base(scrapy.Spider):
         yield scrapy.Request(self.NEXT_BASE_DOMAIN + url.xpath("@href").extract_first(), self._parse)
 
     def _parse(self, response):
-        ipdb.set_trace()
+        # ipdb.set_trace()
         for img in response.xpath(self.IMG_XPATH).xpath("@src").extract():
-            cur_url = response.url[len(self.start_url)+2:]
-
+            # print('1-',response.url)
+            # # cur_url = response.url[len(self.start_url)+3:]
+            cur_url = response.url[len(self.start_url)+1:]
+            # print('2-',cur_url)
+            cur_url = cur_url[:-1] if cur_url.endswith('/') else cur_url
+            # print('3-',cur_url)
             if cur_url.count('/') == 0:
                 chapter = f"{self.manga_name} {int(cur_url):04d}"
                 page = "0001"

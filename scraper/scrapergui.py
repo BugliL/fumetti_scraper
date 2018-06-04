@@ -42,7 +42,7 @@ class ScraperGui(QMainWindow):
         self.ui.total_bar.setValue(0)
         if self.manga_url and self.manga_site:
             self._prepare_to_scraper()
-            self._get_site() # TODO rm
+            # self._get_site() # TODO rm
             p = Process(target=self._run_spider, args=(self.manga_url, self.json_path,))  # TODO continuare da qui
             p.start()
             p.join()
@@ -72,6 +72,9 @@ class ScraperGui(QMainWindow):
         _cur_ch = 0
         for chapter in sorted(self.manga_info['chapters'].keys()):
             chapter_imgs = []
+            chapter_dir = join(self.download_dir, chapter)
+            if not exists(chapter_dir):
+                makedirs(chapter_dir)
             _tot_img = len(self.manga_info['chapters'][chapter])
             _cur_img = 0
             self.ui.total_bar.setValue(int(100 * _cur_ch / _tot_ch))
@@ -80,13 +83,14 @@ class ScraperGui(QMainWindow):
             self.ui.chapter_bar.update()
             for page, img in sorted(self.manga_info['chapters'][chapter].items()):
                 # print(chapter, page, img)
-                img_path = f"{join(self.download_dir,chapter)}x{page}.jpg"
+                # img_path = f"{join(self.download_dir, chapter)}x{page}.jpg"
+                img_path = f"{join(chapter_dir, page)}.jpg"
                 if not exists(img_path):
                     request.urlretrieve(img, img_path)
                 chapter_imgs.append(img_path)
                 self.ui.chapter_bar.setValue(int(100 * _cur_img / _tot_img))
                 self.ui.chapter_bar.update()
-            self._create_manga_chapter(chapter, chapter_imgs)
+            self._create_manga_chapter(chapter, chapter_dir, chapter_imgs)
             self.ui.chapter_bar.setValue(100)
             self.ui.total_bar.update()
         self.ui.total_bar.setValue(100)
@@ -104,10 +108,10 @@ class ScraperGui(QMainWindow):
 
     def _get_site(self):
         if self.manga_site == 'www.mangaeden.com/en/en-manga':
-            self.site_dir = 'Mangaeden'
+            self.site_dir = join('Mangaeden', 'en')
             return MangaedenEN
         elif self.manga_site == 'www.mangaeden.com/it/it-manga':
-            self.site_dir = 'Mangaeden'
+            self.site_dir = join('Mangaeden', 'it')
             return MangaedenIT
         elif self.manga_site == 'www.mangareader.net':
             self.site_dir = 'Mangareader'
@@ -137,12 +141,12 @@ class ScraperGui(QMainWindow):
         opener.addheaders = [('User-Agent', self.AGENTS)]
         request.install_opener(opener)
 
-    def _create_manga_chapter(self, chapter, imgs):
+    def _create_manga_chapter(self, chapter, chapter_dir, imgs):
         method = self.ui.output_format.currentText()
         if method == 'pdf':
             with open(f"{join(self.save_dir, chapter)}.pdf", "wb") as f:
                 f.write(img2pdf.convert(imgs))
-        elif method == 'cbr':
+        elif method == 'cbr':  # FIXME
             with zipfile.ZipFile(f"{join(self.save_dir, chapter)}.cbr", 'w') as cbr:
                 for img in imgs:
                     cbr.write(img)
