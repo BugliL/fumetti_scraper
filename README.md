@@ -10,13 +10,13 @@
 ```
 $ conda create -n scraper python=3.6
 $ conda install -n scraper scrapy PyQt
-$ surce activate scraper
+$ source activate scraper
 (scraper) $ pip install img2pdf
 ```
 
 ## Start the Gui
 ```
-$ surce activate scraper
+$ source activate scraper
 (scraper) $ python app.py
 ```
 
