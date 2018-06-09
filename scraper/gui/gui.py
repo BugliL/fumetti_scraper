@@ -167,7 +167,7 @@ class Ui_mainWindow(object):
 
     def retranslateUi(self, mainWindow):
         _translate = QtCore.QCoreApplication.translate
-        mainWindow.setWindowTitle(_translate("mainWindow", "Fumetti Scraper Gui"))
+        mainWindow.setWindowTitle(_translate("mainWindow", "Manga Scraper Gui"))
         self.manga_site.setItemText(1, _translate("mainWindow", "www.mangaeden.com/en/en-manga"))
         self.manga_site.setItemText(2, _translate("mainWindow", "www.mangaeden.com/it/it-manga"))
         self.manga_site.setItemText(3, _translate("mainWindow", "www.mangareader.net"))

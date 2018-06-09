@@ -1,36 +1,22 @@
-# Scrapy Fumetti
-Versione per Python3
+# Manga Scraper Gui
 
-## Installazione prerequisiti
+## Supported Sites
+- www.mangaeden.com
+- www.mangareader.net
 
-```
-$ sudo apt-get install libffi-dev
-$ sudo apt-get install libssl-dev
-$ sudo apt-get install libxml2-dev libxslt1-dev
-```
 
-## In un comando
+## Install dependencies through Virtualenv (Anaconda) 
 
 ```
-$ sudo apt-get install -y libffi-dev libssl-dev libxml2-dev libxslt1-dev
+$ conda create -n scraper python=3.6
+$ conda install -n scraper scrapy PyQt
+$ surce activate scraper
+(scraper) $ pip install img2pdf
 ```
 
-## Installazione dipendenze
-
+## Start the Gui
 ```
-$ pip install pillow
-$ pip install scrapy
-
+$ surce activate scraper
+(scraper) $ python app.py
 ```
 
-## Lanciare l'applicazione
-```
-$ rm output.json
-$ scrapy crawl fumetti -o output.json
-$ python download.py
-```
-
-## Usando un unico comando
-```
-$ rm output.json; scrapy crawl fumetti -o output.json; python download.py
-```
