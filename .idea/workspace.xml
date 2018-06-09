@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a969f2da-cdb2-4e25-abf3-aa758d0992f8" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scraper/gui/gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraper/gui/gui.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scraper/gui/gui.ui" beforeDir="false" afterPath="$PROJECT_DIR$/scraper/gui/gui.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scraper/scraper/pipelines.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraper/scraper/pipelines.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scraper/scraper/spiders/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraper/scraper/spiders/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scraper/scraper/spiders/mangaeden.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraper/scraper/spiders/mangaeden.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scraper/scraper/spiders/mangareader.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraper/scraper/spiders/mangareader.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scraper/scrapergui.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraper/scrapergui.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,11 +23,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-307">
               <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="scrapergui.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/scraper/scrapergui.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="158" column="29" selection-start-line="158" selection-start-column="29" selection-end-line="158" selection-end-column="29" />
+              <folding>
+                <element signature="e#0#52#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -89,10 +93,10 @@
         <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/scraper/scraper/spiders/mangaeden.py" />
         <option value="$PROJECT_DIR$/scraper/scraper/spiders/base.py" />
-        <option value="$PROJECT_DIR$/scraper/scrapergui.py" />
         <option value="$PROJECT_DIR$/scraper/scraper/spiders/mangareader.py" />
         <option value="$PROJECT_DIR$/scraper/scraper/pipelines.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/scraper/scrapergui.py" />
       </list>
     </option>
   </component>
@@ -317,7 +321,14 @@
       <option name="project" value="LOCAL" />
       <updated>1528106397105</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Restarted Project">
+      <created>1528569438436</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1528569438436</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView">
@@ -333,8 +344,8 @@
     <frame x="64" y="-11" width="1303" height="780" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18828125" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32921174" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18828125" />
+      <window_info active="true" anchor="bottom" id="TODO" order="6" visible="true" weight="0.32921174" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32921174" />
       <window_info anchor="bottom" id="Version Control" order="7" />
@@ -611,16 +622,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scraper/scrapergui.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1214">
-          <caret line="66" selection-start-line="66" selection-end-line="66" />
-          <folding>
-            <element signature="e#0#52#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scraper/scraper/spiders/mangareader.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -667,6 +668,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-307">
           <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scraper/scrapergui.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="158" column="29" selection-start-line="158" selection-start-column="29" selection-end-line="158" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#52#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

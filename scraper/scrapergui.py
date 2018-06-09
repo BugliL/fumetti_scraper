@@ -156,7 +156,7 @@ class ScraperGui(QMainWindow):
             with zipfile.ZipFile(f"{join(self.save_dir, chapter)}.cbr", 'w') as cbr:
                 for img in imgs:
                     cbr.write(img, join(chapter, basename(img)))
-        elif method == 'jpg':  # FIXME rewrite
+        elif method == 'jpg':
             move(chapter_dir, self.save_dir)
         else:
             raise Exception(f'Output Format Not Supported ({method})')
