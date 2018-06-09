@@ -1,4 +1,3 @@
-# import the necessary packages
 from scraper.scraper.spiders.base import Base
 
 

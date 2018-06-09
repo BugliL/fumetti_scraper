@@ -5,7 +5,7 @@ from scraper.scraper.spiders.mangaeden import MangaedenEN, MangaedenIT
 from scraper.scraper.spiders.mangareader import Mangareader
 from multiprocessing import Process
 from twisted.internet import reactor
-from os.path import exists, join
+from os.path import exists, join, basename
 from os import makedirs, remove
 from shutil import move
 from json import loads
@@ -15,6 +15,9 @@ import zipfile
 
 
 class ScraperGui(QMainWindow):
+    """
+        PyQt5 Gui, helps to fetch the manga url and to download it
+    """
     AGENTS = 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1941.0 Safari/537.36'
     manga_site = None
     manga_url = None
@@ -36,37 +39,31 @@ class ScraperGui(QMainWindow):
         self.show()
 
     def launch_scraper(self, signal):
+        """
+            Starts the manga's fetch
+        """
+        self._reset_info()
         self.manga_url = self.ui.manga_name.text()
         self.manga_site = self.ui.manga_site.currentText()
         self.ui.chapter_bar.setValue(0)
         self.ui.total_bar.setValue(0)
         if self.manga_url and self.manga_site:
             self._prepare_to_scraper()
-            # self._get_site() # TODO rm
-            p = Process(target=self._run_spider, args=(self.manga_url, self.json_path,))  # TODO continuare da qui
+            p = Process(target=self._run_spider, args=(self._get_site(),))
             p.start()
             p.join()
             if exists(self.json_path):
-                self.update_manga_info()
+                self._update_manga_info()
                 self.ui.download_button.setEnabled(True)
             else:
                 self._show_allert("Manga Not Found")
         else:
             self._show_allert("Manga Url Missing")
 
-    def update_manga_info(self):
-        with open(join(self.json_dir, f"{self.manga_name}.json"), "r") as j:
-            for line in j.readlines():
-                data = loads(line)
-                if data['chapter'] not in self.manga_info['chapters'].keys():
-                    self.manga_info['chapters'][data['chapter']] = {f"{int(data['page']):05d}": data['img']}
-                else:
-                    self.manga_info['chapters'][data['chapter']][f"{int(data['page']):05d}"] = data['img']
-                self.manga_info['pages'] += 1
-        self.ui.chapters.setText(str(len(self.manga_info['chapters'].keys())))
-        self.ui.pages.setText(str(self.manga_info['pages']))
-
     def download_imgs(self, signal):
+        """
+            Downloads and saves the manga
+        """
         self._prapare_downloader()
         _tot_ch = len(self.manga_info['chapters'])
         _cur_ch = 0
@@ -82,8 +79,6 @@ class ScraperGui(QMainWindow):
             self.ui.total_bar.update()
             self.ui.chapter_bar.update()
             for page, img in sorted(self.manga_info['chapters'][chapter].items()):
-                # print(chapter, page, img)
-                # img_path = f"{join(self.download_dir, chapter)}x{page}.jpg"
                 img_path = f"{join(chapter_dir, page)}.jpg"
                 if not exists(img_path):
                     request.urlretrieve(img, img_path)
@@ -95,7 +90,6 @@ class ScraperGui(QMainWindow):
             self.ui.total_bar.update()
         self.ui.total_bar.setValue(100)
         self.ui.total_bar.update()
-        self._reset_info()
 
     def _prepare_to_scraper(self):
         self.manga_name = self.manga_url.replace("-", " ").title()
@@ -119,15 +113,27 @@ class ScraperGui(QMainWindow):
         else:
             raise Exception(f'MangaSite Not Supported ({self.manga_site})')
 
-    def _run_spider(self, manga_url, manga_name):
+    def _run_spider(self, site_manager):
         try:
             runner = CrawlerRunner()
-            deff = runner.crawl(self._get_site(), manga_url=self.manga_url, manga_name=manga_name,
+            deff = runner.crawl(site_manager, manga_url=self.manga_url, manga_name=self.manga_name,
                                 json_path=self.json_path)
             deff.addBoth(lambda _: reactor.stop())
             reactor.run()
         except Exception:
             self._show_allert('Runtime Error')
+
+    def _update_manga_info(self):
+        with open(join(self.json_dir, f"{self.manga_name}.json"), "r") as j:
+            for line in j.readlines():
+                data = loads(line)
+                if data['chapter'] not in self.manga_info['chapters'].keys():
+                    self.manga_info['chapters'][data['chapter']] = {f"{int(data['page']):05d}": data['img']}
+                else:
+                    self.manga_info['chapters'][data['chapter']][f"{int(data['page']):05d}"] = data['img']
+                self.manga_info['pages'] += 1
+        self.ui.chapters.setText(str(len(self.manga_info['chapters'].keys())))
+        self.ui.pages.setText(str(self.manga_info['pages']))
 
     def _prapare_downloader(self):
         self.download_dir = join(self.download_dir, self.site_dir, self.manga_name)
@@ -146,30 +152,22 @@ class ScraperGui(QMainWindow):
         if method == 'pdf':
             with open(f"{join(self.save_dir, chapter)}.pdf", "wb") as f:
                 f.write(img2pdf.convert(imgs))
-        elif method == 'cbr':  # FIXME
+        elif method == 'cbr':
             with zipfile.ZipFile(f"{join(self.save_dir, chapter)}.cbr", 'w') as cbr:
                 for img in imgs:
-                    cbr.write(img)
-        elif method == 'img':
-            img_num = 1
-            for img in imgs:
-                dst_dir = join(self.save_dir, chapter)
-                if not exists(dst_dir):
-                    makedirs(dst_dir)
-                dst_img = join(dst_dir, f"{img_num:04d}.jpg")
-                if not exists(dst_img):
-                    move(img, dst_img)
-                img_num += 1
+                    cbr.write(img, join(chapter, basename(img)))
+        elif method == 'jpg':  # FIXME rewrite
+            move(chapter_dir, self.save_dir)
         else:
             raise Exception(f'Output Format Not Supported ({method})')
-        # TODO rm images
 
-    def _reset_info(self): # TODO
+    def _reset_info(self):
+        self.ui.download_button.setEnabled(False)
         self.manga_site = None
         self.manga_url = None
         self.site_dir = None
         self.manga_name = None
-        self.manga_info = {'chapters': [], 'pages': 0}
+        self.manga_info = {'chapters': {}, 'pages': 0}
         self.json_path = None
         self.json_dir = 'fetched'
         self.download_dir = 'temp_downloads'

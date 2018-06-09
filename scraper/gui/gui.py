@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'scraper/gui/gui.ui'
+# Form implementation generated from reading ui file 'gui.ui'
 #
 # Created by: PyQt5 UI code generator 5.6
 #
@@ -182,7 +182,7 @@ class Ui_mainWindow(object):
         self.label_6.setText(_translate("mainWindow", "Output Format"))
         self.output_format.setItemText(0, _translate("mainWindow", "pdf"))
         self.output_format.setItemText(1, _translate("mainWindow", "cbr"))
-        self.output_format.setItemText(2, _translate("mainWindow", "img"))
+        self.output_format.setItemText(2, _translate("mainWindow", "jpg"))
         self.download_button.setText(_translate("mainWindow", "Download"))
         self.label_8.setText(_translate("mainWindow", "Total"))
         self.label_9.setText(_translate("mainWindow", "Current Chapter"))
