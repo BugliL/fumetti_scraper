@@ -152,10 +152,10 @@ class ScraperGui(QMainWindow):
         if method == 'pdf':
             with open(f"{join(self.save_dir, chapter)}.pdf", "wb") as f:
                 f.write(img2pdf.convert(imgs))
-        elif method == 'cbr':
-            with zipfile.ZipFile(f"{join(self.save_dir, chapter)}.cbr", 'w') as cbr:
+        elif method == 'cbz':
+            with zipfile.ZipFile(f"{join(self.save_dir, chapter)}.cbz", 'w') as cbz:
                 for img in imgs:
-                    cbr.write(img, join(chapter, basename(img)))
+                    cbz.write(img, join(chapter, basename(img)))
         elif method == 'jpg':
             move(chapter_dir, self.save_dir)
         else:

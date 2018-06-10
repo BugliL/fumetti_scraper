@@ -181,7 +181,7 @@ class Ui_mainWindow(object):
         self.label_4.setText(_translate("mainWindow", "2) Download Manga"))
         self.label_6.setText(_translate("mainWindow", "Output Format"))
         self.output_format.setItemText(0, _translate("mainWindow", "pdf"))
-        self.output_format.setItemText(1, _translate("mainWindow", "cbr"))
+        self.output_format.setItemText(1, _translate("mainWindow", "cbz"))
         self.output_format.setItemText(2, _translate("mainWindow", "jpg"))
         self.download_button.setText(_translate("mainWindow", "Download"))
         self.label_8.setText(_translate("mainWindow", "Total"))

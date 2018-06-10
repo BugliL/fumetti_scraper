@@ -4,6 +4,10 @@
 - www.mangaeden.com
 - www.mangareader.net
 
+## Supported OutPut Formats
+- PDF (one pdf for chapter)
+- CBZ (one archive for chapter)
+- JPG (one folder for chapter with images inside)
 
 ## Install dependencies through Virtualenv (Anaconda) 
 
