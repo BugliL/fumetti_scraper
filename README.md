@@ -9,7 +9,7 @@
 - CBZ (one archive for chapter)
 - JPG (one folder for chapter with images inside)
 
-## Install dependencies through Virtualenv (Anaconda) 
+## Install dependencies through Anaconda 
 
 ```
 $ conda create -n scraper python=3.6
