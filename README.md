@@ -19,8 +19,17 @@ $ source activate scraper
 ```
 
 ## Start the Gui
+**On Linux**
 ```
 $ source activate scraper
 (scraper) $ python app.py
+(scraper) $ source deactivate
 ```
 
+**On Windows**
+```
+activate scraper
+python app.py
+deactivate
+```
+or double click on `app.bat`
