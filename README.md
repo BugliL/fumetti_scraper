@@ -33,3 +33,7 @@ python app.py
 deactivate
 ```
 or double click on `app.bat`
+
+
+## Thanks
+[BugliL](https://github.com/BugliL) who i forked the project from.
