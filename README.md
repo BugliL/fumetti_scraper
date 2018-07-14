@@ -36,4 +36,4 @@ or double click on `app.bat`
 
 
 ## Thanks
-[BugliL](https://github.com/BugliL) who i forked the project from.
+[BugliL](https://github.com/BugliL) from which i forked the project.
